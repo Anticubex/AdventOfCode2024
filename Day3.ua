@@ -8,10 +8,14 @@ Data ← &fras "AOC_3.txt"
 Seek ← regex "mul\\(([0-9]+),([0-9]+)\\)"
 
 ProcA ← /+≡◇(/×≡◇⋕↘1)Seek
-# # ProcA TestA # 161
+# ProcA TestA # 161
 ProcA Data # 190604937
 
-DropConds ← ▽⊸(↘1\(⨬(∘|0◌|1◌):)⊂1+⊃(⌕"don't()"|×2⌕"do()"))
-ProcB     ← ProcA DropConds
+DropConds ← (
+  ▽⊸(
+    +⊃(⌕"don't()"|×2⌕"do()")
+    ↘1\(⨬(∘|0◌|1◌):)⊂1
+  ))
+ProcB ← ProcA DropConds
 # ProcB TestB # 48
 ProcB Data # 82857512
